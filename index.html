@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Media Swipe Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-logo">
+          <img src="loder.png" alt="Logo" />
+        </div>
+      </div>
+      
+  <header>
+    <div class="header-wrapper">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" />
+              </div>
+            <div class="nav-scroll">          
+        <a href="#trending">Trending</a>
+        <a href="#news">News</a>
+        <a href="#videos">Videos</a>
+        <a href="#viral">Viral</a>
+        <a href="#updates">Updates</a>
+      </div>
+      </div>
+    </div>
+    <!-- Dynamic categories -->
+    <div class="category-bar" id="categoryBar"></div>
+  </header>
+
+  <main id="main-container" ontouchstart="startTouch(event)" ontouchmove="moveTouch(event)">
+    <section class="page" id="trending">
+      <article class="post full-screen">🔥 Trending Post 1</article>
+      <article class="post full-screen">🔥 Trending Post 2</article>
+      <article class="post full-screen">🔥 Trending Post 3</article>
+      <article class="post full-screen">🔥 Trending Post 4</article>
+      <article class="post full-screen">🔥 Trending Post 5</article>
+    </section>
+
+    <section class="page" id="news">
+        <article class="post full-screen" data-category="Politics">📰 Politics Post</article>
+        <article class="post full-screen" data-category="Sports">📰 Sports Post</article>
+        <article class="post full-screen" data-category="Technology">📰 Tech Post</article>        
+    </section>
+
+    <section class="page" id="videos">
+      <div class="post full-screen">
+        <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+      </div>
+      <div class="post full-screen">
+        <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" allowfullscreen></iframe>
+      </div>
+      <div class="post full-screen">
+        <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="page" id="viral">
+      <article class="post full-screen">💥 Viral Post 1</article>
+      <article class="post full-screen">💥 Viral Post 2</article>
+    </section>
+
+    <section class="page" id="updates">
+      <article class="post full-screen">🚀 Update 1</article>
+      <article class="post full-screen">📢 Update 2</article>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

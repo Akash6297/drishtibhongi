@@ -104,7 +104,6 @@ window.addEventListener("load", () => {
     }, 1000); // Optional delay for smoother experience
   });
 
-
   //shorts
 
   document.querySelectorAll('.shorts-post').forEach((post) => {

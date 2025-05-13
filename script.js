@@ -27,6 +27,7 @@ function updateActiveNav() {
   });
 }
 
+
 // --- Filter posts by selected category
 function filterPosts(category) {
   const pageId = pages[currentPage];

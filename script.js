@@ -102,4 +102,47 @@ window.addEventListener("load", () => {
       loader.style.visibility = "hidden";
     }, 1000); // Optional delay for smoother experience
   });
+
+
+  //shorts
+
+  document.querySelectorAll('.shorts-post').forEach((post) => {
+    const videoId = post.getAttribute('data-video-id');
+    const iframe = post.querySelector('.shorts-video');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&mute=0&playsinline=1`;
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const iframeWin = entry.target.querySelector('iframe').contentWindow;
+          if (entry.isIntersecting) {
+            iframeWin.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          } else {
+            iframeWin.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          }
+        });
+      },
+      { threshold: 0.7 }
+    );
+  
+    observer.observe(post);
+  });
+  
+      const shorts = document.querySelectorAll('.short');
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            const iframe = entry.target.querySelector('iframe');
+            if (entry.isIntersecting) {
+              iframe.src = entry.target.dataset.video + "?autoplay=1&mute=0&playsinline=1";
+            } else {
+              iframe.src = "";
+            }
+          });
+        },
+        { threshold: 0.9 }
+      );
+      
+      shorts.forEach(short => observer.observe(short));
   

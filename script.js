@@ -1,6 +1,6 @@
 let startX = 0;
 let currentPage = 0;
-const totalPages = 5;
+const totalPages = 50;
 const main = document.getElementById("main-container");
 const categoryBar = document.getElementById("categoryBar");
 
@@ -9,11 +9,11 @@ const pages = ["trending", "news", "videos", "viral", "updates"];
 
 // Define categories
 const pageCategories = {
-  trending: ["All", "Hot", "Now"],
-  news: ["All", "Politics", "Sports", "Technology"],
-  videos: ["All", "Music", "Comedy", "Education"],
-  viral: ["All", "Memes", "Challenges"],
-  updates: ["All", "Product", "Patch"]
+  trending: ["সবকিছু", "দেশ", "এখন"],
+  news: ["সবকিছু", "রাজনীতি", "খেলাধুলা", "প্রযুক্তি"],
+  videos: ["সবকিছু", "সঙ্গীত", "কমেডি", "শিক্ষা"],
+  viral: ["সবকিছু", "মিমস ", "চ্যালেঞ্জ"],
+  updates: ["সবকিছু", "উৎপাদিত", "পার্শে"]
 };
 
 // --- Highlight current nav link
@@ -27,7 +27,6 @@ function updateActiveNav() {
   });
 }
 
-
 // --- Filter posts by selected category
 function filterPosts(category) {
   const pageId = pages[currentPage];
@@ -36,7 +35,7 @@ function filterPosts(category) {
 
   posts.forEach(post => {
     const cat = post.getAttribute("data-category");
-    if (category === "All" || cat === category) {
+    if (category === "সবকিছু" || cat === category) {
       post.style.display = "flex";
     } else {
       post.style.display = "none";
@@ -58,7 +57,7 @@ function updateCategoryBar() {
     categoryBar.appendChild(a);
   });
 
-  filterPosts("All");
+  filterPosts("সবকিছু");
   updateActiveNav();
 }
 
@@ -103,6 +102,7 @@ window.addEventListener("load", () => {
       loader.style.visibility = "hidden";
     }, 1000); // Optional delay for smoother experience
   });
+
 
   //shorts
 

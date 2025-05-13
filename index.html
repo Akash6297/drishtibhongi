@@ -33,7 +33,7 @@
     <!-- Dynamic categories -->
     <div class="category-bar" id="categoryBar"></div>
   </header>
-  
+
   <main id="main-container" ontouchstart="startTouch(event)" ontouchmove="moveTouch(event)">
     <section class="page" id="trending">
         <!-- Trending Post 1 -->
@@ -184,18 +184,28 @@
         </article>
       </section>
       
-
-    <section class="page" id="videos">
-      <div class="post full-screen">
-        <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
-      </div>
-      <div class="post full-screen">
-        <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" allowfullscreen></iframe>
-      </div>
-      <div class="post full-screen">
-        <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
-      </div>
-    </section>
+      <section class="page" id="videos">
+        <div class="shorts-post" data-video-id="e8ssrh8wEoU">
+          <div class="video-wrapper">
+            <iframe class="shorts-video" allow="autoplay" allowfullscreen></iframe>
+            <button class="shorts-share-btn"><i class="fas fa-share-alt"></i></button>
+          </div>
+        </div>
+        <div class="shorts-post" data-video-id="kzgaHxGfnvQ">
+          <div class="video-wrapper">
+            <iframe class="shorts-video" allow="autoplay" allowfullscreen></iframe>
+            <button class="shorts-share-btn"><i class="fas fa-share-alt"></i></button>
+          </div>
+        </div>
+        <div class="shorts-post" data-video-id="aUH26k3XRJ4">
+          <div class="video-wrapper">
+            <iframe class="shorts-video" allow="autoplay" allowfullscreen></iframe>
+            <button class="shorts-share-btn"><i class="fas fa-share-alt"></i></button>
+          </div>
+        </div>
+      </section>
+      
+                        
 
     <section class="page" id="viral">
         <!-- Viral Post 1 -->
@@ -275,5 +285,6 @@
       
   </main>
   <script src="script.js"></script>
+    
 </body>
 </html>

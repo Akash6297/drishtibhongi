@@ -11,7 +11,6 @@ const pages = ["trending", "news", "videos", "viral", "updates"];
 const pageCategories = {
   trending: ["সবকিছু", "দেশ", "এখন"],
   news: ["সবকিছু", "রাজনীতি", "খেলাধুলা", "প্রযুক্তি"],
-  videos: ["সবকিছু", "সঙ্গীত", "কমেডি", "শিক্ষা"],
   viral: ["সবকিছু", "মিমস ", "চ্যালেঞ্জ"],
   updates: ["সবকিছু", "উৎপাদিত", "পার্শে"]
 };

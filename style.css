@@ -156,7 +156,7 @@
     font-size: 24px;
     background-color: #fff;
     padding: 0px;
-    height: 100vh;
+    height: 90vh;
     text-align: center;
   }
   iframe {
@@ -195,7 +195,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: -25px;
-    padding: 0 15px;
+    padding: 0 5px;
     z-index: 2;
   }
   
@@ -229,7 +229,7 @@
   .text-section {
     position: relative;
     flex: 1;
-    padding: 15px;
+    padding: 10px;
     overflow-y: auto;
   }
   
@@ -266,7 +266,7 @@
   }
   
   .shorts-post {
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     position: relative;
     display: flex;

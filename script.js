@@ -1,4 +1,4 @@
-let startX = 0;
+let startX = 0;  // Starting point of touch
 let currentPage = 0;
 const totalPages = 50;
 const main = document.getElementById("main-container");
@@ -60,25 +60,28 @@ function updateCategoryBar() {
   updateActiveNav();
 }
 
-// --- Touch swipe logic
+// --- Touch swipe logic (updated)
 function startTouch(e) {
-  startX = e.touches[0].clientX;
+  startX = e.touches[0].clientX; // Get initial touch position
 }
 
 function moveTouch(e) {
   if (!startX) return;
 
-  const diffX = startX - e.touches[0].clientX;
+  const diffX = startX - e.touches[0].clientX; // Calculate swipe difference
 
+  // If the swipe is significant enough
   if (Math.abs(diffX) > 50) {
-    if (diffX > 0 && currentPage < totalPages - 1) {
+    if (diffX > 0 && currentPage < totalPages - 1) { // Swipe left (next page)
       currentPage++;
-    } else if (diffX < 0 && currentPage > 0) {
+    } else if (diffX < 0 && currentPage > 0) { // Swipe right (previous page)
       currentPage--;
     }
+    
+    // Update main container position (transition to the new page)
     main.style.transform = `translateX(-${currentPage * 100}vw)`;
     updateCategoryBar();
-    startX = 0;
+    startX = 0; // Reset startX to avoid continuous movement
   }
 }
 
@@ -92,55 +95,57 @@ navLinks.forEach((a, index) => {
   });
 });
 
+// --- Load page content and update category bar
 updateCategoryBar();
 
+// --- Listen to touch events (move and start)
+main.addEventListener("touchstart", startTouch);
+main.addEventListener("touchmove", moveTouch);
+
 window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
-    setTimeout(() => {
-      loader.style.opacity = 0;
-      loader.style.visibility = "hidden";
-    }, 1000); // Optional delay for smoother experience
-  });
+  const loader = document.getElementById("loader");
+  setTimeout(() => {
+    loader.style.opacity = 0;
+    loader.style.visibility = "hidden";
+  }, 1000); // Optional delay for smoother experience
+});
 
-  //shorts
+// --- Handle shorts (video posts)
+document.querySelectorAll('.shorts-post').forEach((post) => {
+  const videoId = post.getAttribute('data-video-id');
+  const iframe = post.querySelector('.shorts-video');
+  iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&mute=0&playsinline=1`;
 
-  document.querySelectorAll('.shorts-post').forEach((post) => {
-    const videoId = post.getAttribute('data-video-id');
-    const iframe = post.querySelector('.shorts-video');
-    iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&mute=0&playsinline=1`;
-  
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const iframeWin = entry.target.querySelector('iframe').contentWindow;
-          if (entry.isIntersecting) {
-            iframeWin.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-          } else {
-            iframeWin.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-          }
-        });
-      },
-      { threshold: 0.7 }
-    );
-  
-    observer.observe(post);
-  });
-  
-      const shorts = document.querySelectorAll('.short');
-      
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            const iframe = entry.target.querySelector('iframe');
-            if (entry.isIntersecting) {
-              iframe.src = entry.target.dataset.video + "?autoplay=1&mute=0&playsinline=1";
-            } else {
-              iframe.src = "";
-            }
-          });
-        },
-        { threshold: 0.9 }
-      );
-      
-      shorts.forEach(short => observer.observe(short));
-  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const iframeWin = entry.target.querySelector('iframe').contentWindow;
+        if (entry.isIntersecting) {
+          iframeWin.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        } else {
+          iframeWin.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      });
+    },
+    { threshold: 0.7 }
+  );
+
+  observer.observe(post);
+});
+
+const shorts = document.querySelectorAll('.short');
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      const iframe = entry.target.querySelector('iframe');
+      if (entry.isIntersecting) {
+        iframe.src = entry.target.dataset.video + "?autoplay=1&mute=0&playsinline=1";
+      } else {
+        iframe.src = "";
+      }
+    });
+  },
+  { threshold: 0.9 }
+);
+
+shorts.forEach(short => observer.observe(short));

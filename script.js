@@ -44,7 +44,18 @@ function filterPosts(category) {
 
 // --- Update category bar
 function updateCategoryBar() {
-  const currentId = pages[currentPage];
+const currentId = pages[currentPage];
+  if (currentId === "trending") {
+    categoryBar.style.display = "none";
+    return;
+  }
+  if (currentId === "videos"){
+    categoryBar.style.display = "none";
+    return;
+  }
+
+  categoryBar.style.display = "flex";
+  categoryBar.innerHTML = "";
   const categories = pageCategories[currentId] || [];
   categoryBar.innerHTML = "";
 

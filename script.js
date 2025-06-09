@@ -79,20 +79,31 @@ function startTouch(e) {
 function moveTouch(e) {
   if (!startX) return;
 
-  const diffX = startX - e.touches[0].clientX; // Calculate swipe difference
+  const diffX = startX - e.touches[0].clientX;
 
-  // If the swipe is significant enough
   if (Math.abs(diffX) > 50) {
-    if (diffX > 0 && currentPage < totalPages - 1) { // Swipe left (next page)
-      currentPage++;
-    } else if (diffX < 0 && currentPage > 0) { // Swipe right (previous page)
-      currentPage--;
+    if (diffX > 0) {
+      // Swipe Left
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+      } else {
+        // If at the last page, loop back to the first
+        currentPage = 0;
+      }
+    } else {
+      // Swipe Right
+      if (currentPage > 0) {
+        currentPage--;
+      } else {
+        // If at the first page, loop to the last
+        currentPage = pages.length - 1;
+      }
     }
-    
-    // Update main container position (transition to the new page)
+
     main.style.transform = `translateX(-${currentPage * 100}vw)`;
     updateCategoryBar();
-    startX = 0; // Reset startX to avoid continuous movement
+    updateActiveNav();
+    startX = 0;
   }
 }
 

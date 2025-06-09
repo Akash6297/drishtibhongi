@@ -238,16 +238,15 @@ iframe {
   position: relative;
   flex: 1;
   margin-top: -30px;
-  padding: 15px;
+  padding: 18px;
   overflow-y: auto;
 }
 .post-time {
+  margin-top: 10px;
   font-size: 0.75rem;
   color: #aaa;   
   margin-bottom: 8px;
   text-align: left; 
-  padding: 15px; 
-  padding-bottom: 50px;
 }
 
 .readmore-btn {

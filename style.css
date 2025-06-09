@@ -242,11 +242,11 @@ iframe {
   overflow-y: auto;
 }
 .post-time {
-  font-size: 0.75rem; /* smaller than normal text */
-  color: #aaa;         /* light gray */
+  font-size: 0.75rem;
+  color: #aaa;   
   margin-bottom: 8px;
-  text-align: left;   /* optional: align to the right */
-  padding: 15px; /* optional: some spacing from the edge */
+  text-align: left; 
+  padding: 15px; 
   padding-bottom: 50px;
 }
 

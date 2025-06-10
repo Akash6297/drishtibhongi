@@ -108,20 +108,22 @@ header {
   display: none;
 }
 .nav-scroll a {
-  padding: 10px 18px;
+  padding: 8px 14px;
   text-decoration: none;
-  color: #f8f3ed;
-  font-weight: 500;
+  color: #5a5856;
+  font-weight: 600; /* Bold text */
   font-size: 15px;
-  background-color: #f00000;
-  border-radius: 20px;
-  transition: 0.2s;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
+
 .nav-scroll a:hover,
 .nav-scroll a.active {
-  background-color: #f8b500;
-  color: #000000;
+  color: #3fc8eb;
+  font-weight: 700;
+  text-decoration: none;
 }
+
 
 /* Category Bar */
 .category-bar {
